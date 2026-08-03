@@ -100,8 +100,13 @@ describe('useModelWhitelist', () => {
     expect(models).toContain('gemini-3.1-pro')
   })
 
-  it('minimax model list contains current text models', () => {
-    expect(getModelsByPlatform('minimax')).toEqual(['MiniMax-M3', 'MiniMax-M2.7'])
+  it('minimax model list contains current text and media models', () => {
+    expect(getModelsByPlatform('minimax')).toEqual([
+      'MiniMax-M3',
+      'MiniMax-M2.7',
+      'image-01',
+      'speech-2.8-hd'
+    ])
   })
 
   it('whitelist 模式会忽略通配符条目', () => {

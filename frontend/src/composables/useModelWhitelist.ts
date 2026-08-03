@@ -195,7 +195,9 @@ const doubaoModels = [
 // MiniMax
 const minimaxModels = [
   'MiniMax-M3',
-  'MiniMax-M2.7'
+  'MiniMax-M2.7',
+  'image-01',
+  'speech-2.8-hd'
 ]
 
 // 百度 文心

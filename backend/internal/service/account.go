@@ -270,7 +270,7 @@ func (a *Account) IsGrokOAuth() bool {
 }
 
 func (a *Account) IsOpenAICompatible() bool {
-	return a != nil && (a.Platform == PlatformOpenAI || a.Platform == PlatformGrok)
+	return a != nil && (a.Platform == PlatformOpenAI || a.Platform == PlatformGrok || a.Platform == PlatformMiniMax)
 }
 
 func (a *Account) GeminiOAuthType() string {
@@ -1600,6 +1600,9 @@ func (a *Account) openAIEndpointCapabilitySet() (map[string]bool, bool) {
 func (a *Account) SupportsOpenAIImageCapability(capability OpenAIImagesCapability) bool {
 	if capability == "" {
 		return true
+	}
+	if a.IsMiniMax() {
+		return a.Type == AccountTypeAPIKey
 	}
 	if !a.IsOpenAI() {
 		return false

@@ -25,6 +25,10 @@ func TestDetectModelPlatform(t *testing.T) {
 		{name: "learnlm", model: "learnlm-2.0-flash-experimental", platform: PlatformGemini, ok: true},
 		{name: "grok", model: "grok-4", platform: PlatformGrok, ok: true},
 		{name: "xai prefix", model: "xai/grok-4", platform: PlatformGrok, ok: true},
+		{name: "minimax text", model: "MiniMax-M3", platform: PlatformMiniMax, ok: true},
+		{name: "minimax image", model: "image-01", platform: PlatformMiniMax, ok: true},
+		{name: "minimax speech", model: "speech-2.8-hd", platform: PlatformMiniMax, ok: true},
+		{name: "minimax prefix", model: "minimax/MiniMax-M2.7", platform: PlatformMiniMax, ok: true},
 		{name: "unknown", model: "llama-4-maverick", ok: false},
 	}
 

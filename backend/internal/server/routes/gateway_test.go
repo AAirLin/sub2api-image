@@ -124,6 +124,25 @@ func TestGatewayRoutesOpenAIImagesPathsAreRegistered(t *testing.T) {
 	}
 }
 
+func TestGatewayRoutesMiniMaxMediaPathsAreRegistered(t *testing.T) {
+	router := newGatewayRoutesTestRouter(service.PlatformMiniMax)
+
+	for _, path := range []string{
+		"/v1/images/generations",
+		"/images/generations",
+		"/v1/audio/speech",
+		"/audio/speech",
+	} {
+		req := httptest.NewRequest(http.MethodPost, path, strings.NewReader(`{"model":"image-01","prompt":"draw a cat"}`))
+		req.Header.Set("Content-Type", "application/json")
+		w := httptest.NewRecorder()
+
+		router.ServeHTTP(w, req)
+		require.NotEqual(t, http.StatusNotFound, w.Code, "path=%s should hit MiniMax media handler", path)
+		require.NotContains(t, w.Body.String(), "not supported for this platform")
+	}
+}
+
 func TestGatewayRoutesAsyncImagesPathsAreRegistered(t *testing.T) {
 	router := newGatewayRoutesTestRouter()
 	registered := make(map[string]bool)

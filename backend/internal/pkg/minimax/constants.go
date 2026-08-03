@@ -34,6 +34,20 @@ var DefaultModels = []Model{
 		Modalities:    []string{"text"},
 		Thinking:      []string{"always_on"},
 	},
+	{
+		ID:            "image-01",
+		Object:        "model",
+		DisplayName:   "MiniMax Image 01",
+		Modalities:    []string{"text", "image"},
+		Thinking:      []string{},
+	},
+	{
+		ID:            "speech-2.8-hd",
+		Object:        "model",
+		DisplayName:   "MiniMax Speech 2.8 HD",
+		Modalities:    []string{"text", "audio"},
+		Thinking:      []string{},
+	},
 }
 
 func DefaultModelIDs() []string {
